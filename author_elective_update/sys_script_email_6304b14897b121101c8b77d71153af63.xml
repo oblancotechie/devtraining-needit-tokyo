@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_email">
+    <sys_script_email action="DELETE">
+        <name>CountOverdueNeedIt TasksAssignedTo</name>
+        <new_lines_to_html>false</new_lines_to_html>
+        <script><![CDATA[(function runMailScript(/* GlideRecord */ current, /* TemplatePrinter */ template,
+          /* Optional EmailOutbound */ email, /* Optional GlideRecord */ email_action,
+          /* Optional GlideRecord */ event) {
+
+	// Construct a GlideRecord query to find all NeedIt Task records with Due date
+  // field values in the past for the same Assigned to.  The records cannot be in the
+  // Closed state.
+  var rightNow = new GlideDateTime();
+  
+  var overdueNITasks = new GlideRecord('x_58872_needit_needit_task');
+  overdueNITasks.addQuery('due_date','<=',rightNow);
+  overdueNITasks.addQuery('state','<',3);
+  overdueNITasks.addQuery('assigned_to',current.assigned_to);
+  
+  overdueNITasks.query();
+  
+  // Print to the Message field on a notification 
+  template.print("In addition to this overdue NeedIt Task, you have " + (overdueNITasks.getRowCount() - 1) + " more overdue NeedIt Tasks.");
+
+})(current, template, email, email_action, event);]]></script>
+        <sys_class_name>sys_script_email</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-03-20 20:23:45</sys_created_on>
+        <sys_id>6304b14897b121101c8b77d71153af63</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>CountOverdueNeedIt TasksAssignedTo</sys_name>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_update_name>sys_script_email_6304b14897b121101c8b77d71153af63</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-03-20 20:23:45</sys_updated_on>
+    </sys_script_email>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</application>
+        <file_path/>
+        <instance_id>7deca73fdb9fec50601a11f84896192c</instance_id>
+        <instance_name>dev111297</instance_name>
+        <name>sys_script_email_6304b14897b121101c8b77d71153af63</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_script_email"&gt;&lt;sys_script_email action="INSERT_OR_UPDATE"&gt;&lt;name&gt;CountOverdueNeedIt TasksAssignedTo&lt;/name&gt;&lt;new_lines_to_html&gt;false&lt;/new_lines_to_html&gt;&lt;script&gt;&lt;![CDATA[(function runMailScript(/* GlideRecord */ current, /* TemplatePrinter */ template,
+          /* Optional EmailOutbound */ email, /* Optional GlideRecord */ email_action,
+          /* Optional GlideRecord */ event) {
+
+	// Construct a GlideRecord query to find all NeedIt Task records with Due date
+  // field values in the past for the same Assigned to.  The records cannot be in the
+  // Closed state.
+  var rightNow = new GlideDateTime();
+  
+  var overdueNITasks = new GlideRecord('x_58872_needit_needit_task');
+  overdueNITasks.addQuery('due_date','&lt;=',rightNow);
+  overdueNITasks.addQuery('state','&lt;',3);
+  overdueNITasks.addQuery('assigned_to',current.assigned_to);
+  
+  overdueNITasks.query();
+  
+  // Print to the Message field on a notification 
+  template.print("In addition to this overdue NeedIt Task, you have " + (overdueNITasks.getRowCount() - 1) + " more overdue NeedIt Tasks.");
+
+})(current, template, email, email_action, event);]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script_email&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-03-20 20:23:45&lt;/sys_created_on&gt;&lt;sys_id&gt;6304b14897b121101c8b77d71153af63&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name&gt;CountOverdueNeedIt TasksAssignedTo&lt;/sys_name&gt;&lt;sys_package display_value="NeedIt" source="x_58872_needit"&gt;6ead8e780f603200cd674f8ce1050ed1&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="NeedIt"&gt;6ead8e780f603200cd674f8ce1050ed1&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_email_6304b14897b121101c8b77d71153af63&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2023-03-20 20:23:45&lt;/sys_updated_on&gt;&lt;/sys_script_email&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-939333760</payload_hash>
+        <record_name>CountOverdueNeedIt TasksAssignedTo</record_name>
+        <reverted_from/>
+        <source>6c9c09439768a1101c8b77d71153af67</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-03-20 20:23:45</sys_created_on>
+        <sys_id>746435c0973121101c8b77d71153af82</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>18700b1333c0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-03-20 20:23:45</sys_updated_on>
+        <type>Email Script</type>
+        <update_guid>7c6435c089312110cb7b1163e44b1481</update_guid>
+        <update_guid_history>7c6435c089312110cb7b1163e44b1481:-939333760</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-03-20 20:28:21</sys_created_on>
+        <sys_db_object display_value="" name="sys_script_email">sys_script_email</sys_db_object>
+        <sys_id>7bba4d4ba81b4298bcae4a73d6c1fe24</sys_id>
+        <sys_metadata>6304b14897b121101c8b77d71153af63</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>CountOverdueNeedIt TasksAssignedTo</sys_name>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_scope_delete display_value="">94872a8897db403e8ee69a431de2fca4</sys_scope_delete>
+        <sys_update_name>sys_script_email_6304b14897b121101c8b77d71153af63</sys_update_name>
+        <sys_update_version display_value="sys_script_email_6304b14897b121101c8b77d71153af63">746435c0973121101c8b77d71153af82</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-03-20 20:28:21</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
